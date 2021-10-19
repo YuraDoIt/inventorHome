@@ -1,0 +1,11 @@
+{
+  "name": "01parseinventorsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "parser.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yura",
+  "license": "ISC"
+}
