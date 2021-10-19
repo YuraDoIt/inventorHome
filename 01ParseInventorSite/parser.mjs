@@ -34,3 +34,31 @@ rp(url)
     .catch(function(err){
         return err;
     })
+
+//*** - put you data here
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: '***',
+        pass: '***',
+    },
+});
+
+let mailOption = {
+    from: '***',
+    to: 'yura9989@gmail.com',
+    subject: `Inventor soft parse info about vacancies`,
+    html:`The body of the email goes here in html`,
+    attachments: [{
+        path: __dirname + "/" + 'inventorTest.gz'
+    }]
+
+};
+
+transporter.sendMail(mailOption, function(err, info){
+    if(err){
+        console.log(err)
+    } else {
+        console.log('Email send to: ' + info.response + " receiver : " + mailOption.to);
+    }
+})
