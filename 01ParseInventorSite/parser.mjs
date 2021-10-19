@@ -1,7 +1,7 @@
 import  rp  from 'request-promise';
 import  cheerio from 'cheerio';
-
 import fs from 'fs';
+import nodemailer from 'nodemailer';
 
 import { mapToObj } from './mapToObj.mjs';
 import { zipFile } from './zipFile.mjs';
