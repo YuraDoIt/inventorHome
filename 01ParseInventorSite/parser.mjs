@@ -6,7 +6,7 @@ import nodemailer from 'nodemailer';
 import { mapToObj } from './mapToObj.mjs';
 import { zipFile } from './zipFile.mjs';
 
-var url = 'https://inventorsoft.co/careers';
+const url = 'https://inventorsoft.co/careers';
 
 
 rp(url)
@@ -19,10 +19,10 @@ rp(url)
             map.set(index + 1, $(this).text());
         });
 
-        var converted = mapToObj(map);
+        let converted = mapToObj(map);
         console.log(converted);
 
-        var data = JSON.stringify(converted, null, 2);
+        let data = JSON.stringify(converted, null, 2);
         fs.writeFile('./vacancy.json', data, (err) => {
             if(err) throw err;            
         })
@@ -30,6 +30,9 @@ rp(url)
     })
     .then(() => {
         zipFile('vacancy.json','inventorTest.gz');
+    })
+    .then(() => {
+        //sendMail();
     })
     .catch(function(err){
         return err;

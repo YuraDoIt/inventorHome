@@ -10,4 +10,5 @@ Open folder with project and run command:
   5 cheerio
   6 nodemailer
 
-  For using Mail send put you mail data instead of ***
+For using Mail send put you mail data instead of ***
+and uncommit sendMail() function
