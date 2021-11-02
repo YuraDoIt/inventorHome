@@ -15,7 +15,7 @@ rp(url)
         const $ = cheerio.load(html);
         const map = new Map();
 
-        $('.vacancy p',html).each(function(index){
+        $('.vacancy p', html).each(function(index){
             map.set(index + 1, $(this).text());
         });
 
