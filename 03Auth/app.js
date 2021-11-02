@@ -1,19 +1,21 @@
 import express from 'express';
+import mongoose from 'mongoose';
 const app =  express();
-const port = 8089;
 
-app.get('/', function(req, res){
-    res.end("Hello");
-});
+const port = process.env.PORT || 3000;
 
-app.get('/admin', function(req, res){
-    res.send("Admin page");
-})
+app.use(express.json());
 
-app.get('/user', function(req, res){
-    res.send('simple user page');
-})
+const start = () => {
+    try{
+        mongoose.connect(`mongodb+srv://yura:yura12345@cluster0.an8b0.mongodb.net/Auth?retryWrites=true&w=majority`);
+        app.listen(port, ()=>{
+            console.log(`Server run on port ${port}`)
+        });
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
 
-app.listen(port, ()=>{
-    console.log(`Server run on port ${port}`)
-});
+start();
