@@ -1,1 +1,1 @@
-npm i express mongoose nodemon bcryptjs
+npm i express mongoose nodemon bcryptjs express-validator jsonwebtoken
