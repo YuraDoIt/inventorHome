@@ -1,1 +1,1 @@
-npm i express mongoose nodemon
+npm i express mongoose nodemon bcryptjs
