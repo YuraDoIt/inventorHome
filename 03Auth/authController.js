@@ -3,6 +3,15 @@ import {modRole} from './models/role.js';
 import bcrypt from 'bcryptjs';
 import {validationResult} from 'express-validator';
 import jwt from 'jsonwebtoken';
+import { secretKey } from './config.js';
+
+const generateToken = function(id, roles){
+    const payload = {
+        id,
+        roles
+    }
+    return jwt.sign(payload, secretKey, {expiresIn: "2h"});
+}
 
 class AuthController {
     async registration(req, res) {
@@ -48,7 +57,8 @@ class AuthController {
                 return res.status(400).json({message: 'Введений пароль невірний'});
             }
 
-            
+            const token = generateToken(user._id, user.roles);
+            return res.json({token});
 
         }
         catch(e){
@@ -59,13 +69,7 @@ class AuthController {
 
     async getUser(req, res){
         try{
-            // const userRole = new modRole();
-            // const adminRole = new modRole({value: "ADMIN"});
-            // await userRole.save();
-            // await adminRole.save((err,result)=>{
-            //     if(err) console.log(err)
-            //     console.log(result);
-            // })
+            
 
             res.json("server work");
         }
