@@ -13,13 +13,7 @@ app.use("/auth", router);
 const start = () => {
     try{
         mongoose.connect(`mongodb+srv://yura:yura12345@cluster0.an8b0.mongodb.net/Auth?retryWrites=true&w=majority`);
-        
-        app.get('/',function(req,res,next){
-            res.send('Root')
-            next();
-        });
-
-              
+       
         var myFun = function(req, res, next){
             console.log("New server reload");
             next();

@@ -49,6 +49,7 @@ class AuthController {
         try{
             const {username, password } = req.body;
             const user = await modUser.findOne({username});
+
             if(!user){
                 return res.status(400).json({message: 'Даний користувач не зареєстрований'});
             }
@@ -69,7 +70,8 @@ class AuthController {
 
     async getUser(req, res){
         try{
-            
+            const users = await modUser.find();
+            res.json(users);
 
             res.json("server work");
         }
