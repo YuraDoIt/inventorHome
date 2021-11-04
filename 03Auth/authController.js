@@ -2,6 +2,7 @@ import {modUser} from './models/user.js';
 import {modRole} from './models/role.js';
 import bcrypt from 'bcryptjs';
 import {validationResult} from 'express-validator';
+import jwt from 'jsonwebtoken';
 
 class AuthController {
     async registration(req, res) {
@@ -11,7 +12,7 @@ class AuthController {
             //     return res.status(400).json({message: "Помилка при реєстрації", errors});
             // }
             const {username , password } = req.body;
-            User.findOne({username});
+            const candidate = await modUser.findOne({username});
 
             if(candidate){
                 return res.status(400).json({message: 'Користувач уже існує'})
@@ -38,7 +39,7 @@ class AuthController {
     async login(req, res){
         try{
             const {username, password } = req.body;
-            const user = await userRole.findOne({username});
+            const user = await modUser.findOne({username});
             if(!user){
                 return res.status(400).json({message: 'Даний користувач не зареєстрований'});
             }
@@ -46,6 +47,8 @@ class AuthController {
             if(!validPassword){
                 return res.status(400).json({message: 'Введений пароль невірний'});
             }
+
+            
 
         }
         catch(e){
