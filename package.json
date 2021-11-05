@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "inventorhome",
   "version": "1.0.0",
   "description": "",
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/YuraDoIt/inventorHome/issues"
   },
-  "homepage": "https://github.com/YuraDoIt/inventorHome#readme"
+  "homepage": "https://github.com/YuraDoIt/inventorHome#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.12",
+    "nodemon": "^2.0.14"
+  }
 }
